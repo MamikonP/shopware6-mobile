@@ -14,6 +14,7 @@ abstract class AppTheme {
   Color get background;
   Color get borderColor;
   Color get greyScaleLight100;
+  Color get greyScaleLight;
   Color get snackbarColor;
 
   TextStyle get title1 => TextStyle(

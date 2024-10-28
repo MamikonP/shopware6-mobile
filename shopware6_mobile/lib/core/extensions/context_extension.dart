@@ -11,4 +11,7 @@ extension ContextExtension on BuildContext {
   AppTheme get themeOf => Theme.of(this).brightness == Brightness.dark
       ? DarkModeTheme()
       : LightModeTheme();
+
+  void showErrorSnackbar(String error) =>
+      ScaffoldMessenger.of(this).showSnackBar(SnackBar(content: Text(error)));
 }

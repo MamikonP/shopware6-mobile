@@ -3,5 +3,6 @@
   "lblClothing": "Clothing",
   "lblFilter": "Filter",
   "lblName": "Name",
-  "lblDetails": "Details"
+  "btnDetails": "Details",
+  "btnAddToShoppingCart": "Add to shopping cart"
 }

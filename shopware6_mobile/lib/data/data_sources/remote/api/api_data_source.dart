@@ -10,7 +10,7 @@ abstract class ApiDataSource {
   Future<http.Response> perform({required BaseApiRequest apiRequest});
 }
 
-abstract class ApiDataSourceImp implements ApiDataSource {
+class ApiDataSourceImp implements ApiDataSource {
   final http.Client _client = http.Client();
 
   http.Response _performResponse(http.Response response) {
@@ -25,7 +25,7 @@ abstract class ApiDataSourceImp implements ApiDataSource {
       case 403:
         throw ForbiddenException();
       case 404:
-        throw NotFoundException(response.body);
+        throw NotFoundException(response.reasonPhrase);
       case 422:
         throw BackendException(response.body);
       case 409:

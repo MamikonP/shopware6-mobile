@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../logic/product/product_bloc.dart';
 import '../../screens.dart';
 
 class ProductListRoute<T> extends PageRoute<T>
@@ -11,7 +13,11 @@ class ProductListRoute<T> extends PageRoute<T>
 
   @override
   Widget buildContent(BuildContext context) {
-    return const ProductListScreen();
+    return BlocProvider<ProductBloc>(
+      create: (context) =>
+          ProductBloc(productRepository: RepositoryProvider.of(context))..add(ProductListFetched()),
+      child: const ProductListScreen(),
+    );
   }
 
   @override

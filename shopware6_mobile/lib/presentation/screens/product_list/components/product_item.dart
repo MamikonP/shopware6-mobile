@@ -5,10 +5,13 @@ import '../../../../core/constants/gaps.dart';
 import '../../../../core/constants/ui_constants.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/extensions/number_extension.dart';
+import '../../../../domain/entities/product/product_entity.dart';
 import '../../../widgets.dart';
 
 class ProductItem extends StatelessWidget {
-  const ProductItem({super.key});
+  const ProductItem({super.key, this.product});
+
+  final ProductEntity? product;
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +25,8 @@ class ProductItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             CachedNetworkImage(
-              imageUrl: '',
-              fit: BoxFit.cover,
+              imageUrl: product?.cover?.media?.url ?? '',
+              fit: BoxFit.contain,
               height: kProductImageHeight,
               width: MediaQuery.sizeOf(context).width,
               errorWidget: (context, url, error) => Icon(
@@ -43,23 +46,29 @@ class ProductItem extends StatelessWidget {
                 ),
               ),
             ),
+            kLarger.v,
             Text(
-              'title',
+              product?.translated?.name ?? '',
               style: context.themeOf.title2,
             ),
+            kLarge.v,
             Text(
-              'data',
+              product?.translated?.description ?? '',
               style: context.themeOf.bodyText1,
+              overflow: TextOverflow.ellipsis,
+              maxLines: 3,
             ),
+            kLarge.v,
             Text(
-              'price',
+              '€${product?.calculatedPrice?.totalPrice?.toString() ?? ''}',
               style: context.themeOf.subtitle1,
             ),
+            kLarge.v,
             AppButton(
-              title: context.translate.lblDetails,
-              backgroundColor: context.themeOf.secondary.withOpacity(0.1),
+              title: context.translate.btnAddToShoppingCart,
+              backgroundColor: context.themeOf.primary,
               radius: 0,
-              foregroundColor: context.themeOf.greyScaleLight100,
+              foregroundColor: context.themeOf.greyScaleLight,
             )
           ],
         ),

@@ -51,6 +51,7 @@ abstract class ApiRequest extends BaseApiRequest {
     }
     request.headers[HttpHeaders.contentTypeHeader] = 'application/json';
     request.headers[HttpHeaders.acceptHeader] = 'application/json';
+    request.headers['sw-access-key'] = 'SWSCYWNMWHVYOGKZQMNTYTC1QW';
     return request;
   }
 }

@@ -36,4 +36,7 @@ class DarkModeTheme extends AppTheme {
 
   @override
   Color get greyScaleLight100 => const Color(0xff000000);
+  
+  @override
+  Color get greyScaleLight => const Color(0xffffffff);
 }
