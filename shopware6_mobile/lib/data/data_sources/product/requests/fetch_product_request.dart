@@ -1,8 +1,11 @@
+import '../../../models/product/product_param_model.dart';
 import '../../remote/api/api_config.dart';
 import '../../remote/api/api_request.dart';
 
 class FetchProductsRequest extends ApiRequest {
-  FetchProductsRequest();
+  FetchProductsRequest(this.model);
+
+  final ProductParamModel model;
 
   @override
   String get host => ApiConfig.apiBaseUrl;
@@ -14,5 +17,5 @@ class FetchProductsRequest extends ApiRequest {
   String get path => '/store-api/product';
 
   @override
-  Map<String, String>? get body => <String, String>{'page': '1', 'limit': '20'};
+  Map<String, dynamic>? get body => model.toJson();
 }

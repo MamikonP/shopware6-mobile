@@ -9,14 +9,12 @@ class OutlineDropDownField extends StatefulWidget {
   const OutlineDropDownField({
     super.key,
     required this.options,
-    required this.label,
     this.hintText = '',
     this.validator,
     this.onChanged,
   });
 
   final List<String> options;
-  final String label;
   final String hintText;
   final String? Function(String? value)? validator;
   final void Function(String? value)? onChanged;
@@ -31,7 +29,7 @@ class _OutlineDropDownFieldState extends State<OutlineDropDownField> {
   @override
   void initState() {
     super.initState();
-    _controllerNotifier = ValueNotifier('');
+    _controllerNotifier = ValueNotifier(widget.options.first);
   }
 
   @override

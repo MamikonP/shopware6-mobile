@@ -7,7 +7,11 @@ sealed class ProductEvent extends Equatable {
   List<Object?> get props => [];
 }
 
-final class ProductListFetched extends ProductEvent {}
+final class ProductListFetched extends ProductEvent {
+  const ProductListFetched({required this.entity});
+
+  final ProductParamEntity entity;
+}
 
 final class ProductListFailed extends ProductEvent {
   const ProductListFailed({required this.error});

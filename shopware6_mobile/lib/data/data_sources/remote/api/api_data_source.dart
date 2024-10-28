@@ -54,7 +54,7 @@ class ApiDataSourceImp implements ApiDataSource {
     } on BackendException catch (e) {
       throw BackendException(e.message);
     } on BadRequestException catch (e) {
-      throw BackendException(e.message);
+      throw ApiException(message: e.message);
     } on NotFoundException catch (e) {
       throw NotFoundException(e.message);
     } catch (e) {

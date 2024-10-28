@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
 import '../../../domain/entities/product/product_entity.dart';
+import '../../../domain/entities/product/product_param_entity.dart';
 import '../../../domain/repositories/product_repository.dart';
 
 part 'product_event.dart';
@@ -20,7 +21,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
       ProductListFetched event, Emitter<ProductState> emit) async {
     try {
       emit(ProductStateBusy());
-      final products = await productRepository.fetchProducts();
+      final products = await productRepository.fetchProducts(event.entity);
       emit(ProductListFetch(products: products));
     } catch (e) {
       emit(ProductListFail(error: e.toString()));

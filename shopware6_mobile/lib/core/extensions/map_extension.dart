@@ -13,3 +13,8 @@ extension NullableMapStringExtension on Map<String, String>? {
         .substring(0, buffer.length - 1); // removing trailing '&'
   }
 }
+
+extension MapExtension on Map<String, dynamic> {
+  Map<String, String> toMapString() => map((String key, dynamic value) =>
+      MapEntry<String, String>(key, value.toString()));
+}

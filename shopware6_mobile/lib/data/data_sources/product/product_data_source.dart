@@ -1,11 +1,12 @@
 import '../../../domain/repositories/api_repository.dart';
 import '../../models/base/element_model.dart';
 import '../../models/product/product_model.dart';
+import '../../models/product/product_param_model.dart';
 import 'requests/fetch_product_request.dart';
 import 'responses/product_list_response.dart';
 
 abstract class ProductDataSource {
-  Future<ElementModel<ProductModel>> fetchProducts();
+  Future<ElementModel<ProductModel>> fetchProducts(ProductParamModel model);
 }
 
 class ProductDataSourceImp implements ProductDataSource {
@@ -14,9 +15,10 @@ class ProductDataSourceImp implements ProductDataSource {
   final ApiRepository apiRepository;
 
   @override
-  Future<ElementModel<ProductModel>> fetchProducts() async =>
+  Future<ElementModel<ProductModel>> fetchProducts(
+          ProductParamModel model) async =>
       await apiRepository.request(
-        apiRequest: FetchProductsRequest(),
+        apiRequest: FetchProductsRequest(model),
         apiResponse: ProductListResponse(),
       );
 }
