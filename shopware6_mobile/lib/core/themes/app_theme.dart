@@ -1,23 +1,19 @@
 import 'package:flutter/material.dart';
 
-import '../constants/enums/app_text_font_weight.dart';
+import '../constants.dart';
 import '../extensions/app_text_font_weight_extension.dart';
 import 'theme_mode/dark_mode_theme.dart';
 import 'theme_mode/light_mode_theme.dart';
 
 abstract class AppTheme {
-  static AppTheme currentThemeOf(BuildContext context) =>
-      Theme.of(context).brightness == Brightness.dark
-          ? DarkModeTheme()
-          : LightModeTheme();
-
+  ColorScheme get colorScheme;
   Color get error => const Color(0xFFFF0000);
   Color get primary;
   Color get onPrimary;
   Color get secondary;
   Color get background;
   Color get borderColor;
-  ColorScheme get colorScheme;
+  Color get greyScaleLight100;
   Color get snackbarColor;
 
   TextStyle get title1 => TextStyle(
@@ -64,21 +60,30 @@ abstract class AppTheme {
 }
 
 class AppThemeData {
+  final _darkModeTheme = DarkModeTheme();
+  final _ligtModeTheme = LightModeTheme();
+
   ThemeData get darkTheme => ThemeData(
-        scaffoldBackgroundColor: DarkModeTheme().background,
-        colorScheme: DarkModeTheme().colorScheme,
-        appBarTheme: AppBarTheme(backgroundColor: DarkModeTheme().primary),
+        scaffoldBackgroundColor: _darkModeTheme.background,
+        colorScheme: _darkModeTheme.colorScheme,
+        appBarTheme: AppBarTheme(
+          backgroundColor: _darkModeTheme.background,
+          centerTitle: true,
+        ),
         bottomSheetTheme:
-            BottomSheetThemeData(dragHandleColor: DarkModeTheme().primary),
+            BottomSheetThemeData(dragHandleColor: _darkModeTheme.background),
         useMaterial3: true,
       );
 
   ThemeData get lightTheme => ThemeData(
-        scaffoldBackgroundColor: LightModeTheme().background,
-        colorScheme: LightModeTheme().colorScheme,
-        appBarTheme: AppBarTheme(backgroundColor: LightModeTheme().primary),
+        scaffoldBackgroundColor: _ligtModeTheme.background,
+        colorScheme: _ligtModeTheme.colorScheme,
+        appBarTheme: AppBarTheme(
+          backgroundColor: _ligtModeTheme.background,
+          centerTitle: true,
+        ),
         bottomSheetTheme:
-            BottomSheetThemeData(dragHandleColor: LightModeTheme().primary),
+            BottomSheetThemeData(dragHandleColor: _ligtModeTheme.background),
         useMaterial3: true,
       );
 }

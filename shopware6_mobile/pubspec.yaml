@@ -7,9 +7,15 @@ environment:
 
 dependencies:
   bloc: ^8.1.4
+  cached_network_image: ^3.4.1
   cupertino_icons: ^1.0.6
+  dropdown_button2: ^2.3.9
   equatable: ^2.0.5
   flutter:
+    sdk: flutter
+  flutter_bloc: ^8.1.6
+  flutter_localization: ^0.2.2
+  flutter_localizations:
     sdk: flutter
   http: ^1.2.2
 
@@ -20,3 +26,4 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  generate: true

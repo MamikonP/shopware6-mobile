@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-import '../screens.dart';
+import '../../screens.dart';
 
 class ProductListRoute<T> extends PageRoute<T>
     with CupertinoRouteTransitionMixin<T> {

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'app.dart';
+import 'core/main_bloc_provider.dart';
 
 void main() {
-  runApp(const App());
+  runApp(const MainBlocProvider(child: App()));
 }

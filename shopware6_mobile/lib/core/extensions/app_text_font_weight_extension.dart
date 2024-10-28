@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 
-import '../constants/enums/app_text_font_weight.dart';
+import '../constants.dart';
+
 
 extension AppTextFontWeightExtension on AppTextFontWeight {
   FontWeight get fontWeight {
