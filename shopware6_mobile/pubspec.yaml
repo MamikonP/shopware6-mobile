@@ -6,7 +6,9 @@ environment:
   sdk: '>=3.4.0 <4.0.0'
 
 dependencies:
+  bloc: ^8.1.4
   cupertino_icons: ^1.0.6
+  equatable: ^2.0.5
   flutter:
     sdk: flutter
   http: ^1.2.2
